@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import crypto from 'crypto';
 import uniqueValidator from 'mongoose-unique-validator';
 
-import { secret } from '../../config';
+import { secret } from '../../config/secret.js';
 
 const userSchema = mongoose.Schema({
 	username: {
