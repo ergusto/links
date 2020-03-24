@@ -1,10 +1,10 @@
-import { createReducer } from 'lib';
+import { createReducer } from '../../lib';
 import { isAuthenticated, getToken, getUser } from './storage.js';
 
+import { LOGOUT_USER } from './actionTypes.js';
 import { UNAUTHORISED } from '../../middleware/api.js';
-import { LOGOUT_SUCCESS } from '../auth';
 import { LOGIN_SUCCESS } from '../login';
-import { REGISTRATION_SUCCESS } from '../registration';
+import { REGISTRATION_SUCCESS } from '../register';
 
 const initialState = {
 	authenticated: isAuthenticated() ? true : false,
@@ -32,5 +32,5 @@ export default createReducer(initialState, {
 	[LOGIN_SUCCESS]: authenticate,
 	[REGISTRATION_SUCCESS]: authenticate,
 	[UNAUTHORISED]: unauthenticate,
-	[LOGOUT_SUCCESS]: unauthenticate
+	[LOGOUT_USER]: unauthenticate
 });

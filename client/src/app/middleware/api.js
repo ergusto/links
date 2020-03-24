@@ -28,7 +28,7 @@ export const parseServerErrors = (server_errors) => {
 
 export const getAuthHeaders = token => {
 	return Object.assign({}, getBaseHeaders(), {
-		'Authorization': 'JWT ' + token
+		'Authorization': 'Token ' + token
 	});
 };
 
@@ -74,13 +74,13 @@ const callApi = ({ authenticated, endpoint, method, body, token }) => {
 };
 
 export default store => next => action => {
-	const config = action[CALL_API];
+	const { type, payload: config } = action;
 
-	if (typeof config === 'undefined') {
+	if (type !== CALL_API || !config) {
 		return next(action);
 	}
 
-	let { endpoint } = config;
+	let endpoint = config.endpoint;
 	const { types, method, body } = config;
 
 	if (typeof endpoint === 'function') {
@@ -107,12 +107,12 @@ export default store => next => action => {
 		throw new Error('Method must be a valid method');
 	}
 
-	const nextAction = (type, payload) => {
-		const finalPayload = Object.assign({}, action.payload, payload);
+	const nextAction = (nextType, payload) => {
+		const finalPayload = Object.assign({}, payload);
 		const finalAction = Object.assign({}, action);
-		delete finalAction[CALL_API];
 		finalAction.payload = finalPayload;
-		finalAction.type = type;
+		finalAction.type = nextType;
+
 		return finalAction;
 	};
 
@@ -124,6 +124,7 @@ export default store => next => action => {
 		options.authenticated = auth.authenticated;
 	}
 
+	// eslint-disable-next-line
 	const [requestType, successType, failureType] = types;
 
 	return callApi(options).then(response => {
@@ -135,6 +136,7 @@ export default store => next => action => {
 		}
 
 		if (err.status === HTTP_BAD_REQUEST) {
+			// Possible form/validation errors
 			const { error, errors } = parseServerErrors(err.body);
 			return next(nextAction(failureType, { error, errors }));
 		}

@@ -1,0 +1,9 @@
+@import '../imports';
+
+@each $key, $value in $font-sizes {
+
+	.font-size-#{$key} {
+		font-size: $value;
+	}
+
+}

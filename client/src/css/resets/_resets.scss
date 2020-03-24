@@ -1,0 +1,18 @@
+html, body {
+	height: 100%;
+	min-height: 100%;
+}
+
+html {
+	font-size: 16px;
+    line-height: 1.2;
+	-webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-tap-highlight-color: transparent;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+@import 'box-sizing';
+@import 'resets/buttons';
+@import 'resets/normalize.css';

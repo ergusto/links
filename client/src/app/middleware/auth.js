@@ -1,7 +1,7 @@
-import { push } from 'react-router-redux';
+import { push } from 'connected-react-router';
 import { LOGIN_SUCCESS } from '../modules/login';
-import { REGISTRATION_SUCCESS } from '../modules/registration';
-import { UNAUTHORISED, LOGOUT_SUCCESS, setToken, setUser, removeUser } from '../modules/auth';
+import { REGISTRATION_SUCCESS } from '../modules/register';
+import { UNAUTHORISED, LOGOUT_USER, setToken, setUser, logout } from '../modules/auth';
 
 export default store => next => action => {
 	const { type, payload } = action;
@@ -12,8 +12,8 @@ export default store => next => action => {
 		setToken(token);
 	}
 
-	if (type === UNAUTHORISED || type === LOGOUT_SUCCESS) {
-		removeUser();
+	if (type === UNAUTHORISED || type === LOGOUT_USER) {
+		logout();
 		store.dispatch(push('/'));
 	}
 

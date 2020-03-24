@@ -1,25 +1,23 @@
-import request from 'superagent';
-import { Storage, api, getCookie, getBaseHeaders } from 'lib';
+import { Storage } from '../../lib/index.js';
 
 const storage = new Storage('auth');
 export const getToken = () => storage.get('token');
 export const setToken = token => storage.update({ token });
 export const getUser = () => {
-	const id = getId();
-	if (id) {
+	if (isAuthenticated()) {
 		return {
-			id: id,
+			username: getUsername(),
 			email: getEmail(),
 		};
 	} else {
 		return false;
 	}
 };
-export const setUser = ({ id, email}) => storage.update({ id, email });
-export const getId = () => storage.get('id');
+export const setUser = ({ username, email}) => storage.update({ username, email });
+export const getUsername = () => storage.get('username');
 export const getEmail = () => storage.get('email');
-export const removeUser = () => storage.remove('token id email');
-export const isAuthenticated = () => !!getId();
+export const removeUser = () => storage.remove('token username email');
+export const isAuthenticated = () => !!getToken();
 
 export function logout(cb) {
 	removeUser();

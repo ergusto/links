@@ -4,15 +4,17 @@ import { routerMiddleware as createRouterMiddleware } from 'connected-react-rout
 import { createBrowserHistory } from 'history';
 import { createLogger } from 'redux-logger';
 
+import apiMiddleware from '../middleware/api.js';
+import authMiddleware from '../middleware/auth.js';
 import createRootReducer from './rootReducer.js';
 
 export const history = createBrowserHistory();
 
 const getMiddleware = routerMiddleware => {
 	if (process.env.NODE_ENV === 'production') {
-		return applyMiddleware(thunkMiddleware, routerMiddleware);
+		return applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware, routerMiddleware);
 	} else {
-		return applyMiddleware(thunkMiddleware, routerMiddleware, createLogger())
+		return applyMiddleware(thunkMiddleware, apiMiddleware, authMiddleware, routerMiddleware, createLogger())
 	}
 };
 

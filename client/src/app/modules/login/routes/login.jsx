@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
+import Login from '../components/login.jsx';
 
-export default function() {
-		return (
-			<div className='justify-centre'>
-				<h1>Login</h1>
-			</div>
-		);
-	}
+export default function LoginRoute() {
+	return (
+		<Login />
+	);
+}

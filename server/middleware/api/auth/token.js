@@ -1,16 +1,20 @@
 import { Router } from 'express';
+import passport from 'passport';
 import { required, optional } from '../../protections';
 
 const router = Router();
 
 router.post('/token', function(req, res, next) {
-	const { email, password } = req.body.user;
+	const { username, password } = req.body.user;
 
-	if (!email) {
-		return res.status(422).json({ errors: { email: "can't be blank" } });
+	if (!username) {
+		return res.status(422).json({ errors: { username: "can't be blank" } });
 	}
 
-	if(!password){
+	console.log(username);
+	console.log(password);
+
+	if (!password){
 		return res.status(422).json({ errors: { password: "can't be blank" } });
 	}
 
@@ -20,10 +24,7 @@ router.post('/token', function(req, res, next) {
 		}
 
 		if (user) {
-			user.token = user.generateJWT();
-			return res.json({
-				user: user.toAuthJSON()
-			});
+			return res.json(user.toAuthJSON());
 		} else {
 			return res.status(422).json(info);
 		}

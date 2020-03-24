@@ -2,6 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './app/startup';
 import * as serviceWorker from './serviceWorker';
+
+import 'typeface-raleway';
+import 'normalize.css/normalize.css';
+import './css/site.scss';
 import 'whatwg-fetch';
 
 ReactDOM.render(<App />, document.getElementById('root'));

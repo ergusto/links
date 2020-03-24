@@ -1,0 +1,40 @@
+$buttons: (
+	example: (
+		color: get-color(dark-grey),
+		border-color: transparent,
+		background-color: transparent,
+		hover-color: get-color(light-grey),
+		hover-border-color: get-color(light-grey),
+		hover-background-color: get-color(light-grey),
+		active-color: get-color(light-grey),
+		active-border-color: get-color(light-grey),
+		active-background-color: get-color(subdued-grey),
+		focus-color: get-color(light-grey),
+		focus-border-color: get-color(light-grey),
+		focus-background-color: get-color(light-grey)
+	),
+	ghost: (
+		border-color: transparent,
+		background-color: transparent,
+		color: white,
+		hover-background-color: rgba(255, 255, 255, 0.2),
+		active-background-color: rgba(255, 255, 255, 0.1),
+		box-shadow: 2px 2px 2px rgba(0,0,0,.1)
+	),
+	white-ghost: (
+		border-color: white,
+		color: white
+	),
+	grey-ghost: (
+		border-color: transparent,
+		background-color: transparent,
+		color: get-color(dark-grey),
+		hover-background-color: get-color(light-grey),
+		active-background-color: get-color(subdued-grey)
+	),
+	purple-main: (
+		background-color: #5d4aec,
+		border-color: #5d4aec,
+		color: white,
+	)
+);

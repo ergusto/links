@@ -1,0 +1,81 @@
+@import '../imports';
+
+/***********
+    Default button styles
+***********/
+
+.button {
+	line-height: 2rem;
+	border: 1px solid;
+	border-color: inherit;
+	border-radius: 4.2px;
+    text-align: center;
+    transition: all .3s ease;
+    box-shadow: none;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/***********
+    Button sizes
+***********/
+.button {
+
+}
+
+.button--small {
+
+}
+
+.button--medium {
+	width: 120px;	
+}
+
+/***********
+    Button animations
+***********/
+.button--shift-on-hover {
+    transition: 0.2s;
+}
+
+.button--shift-on-hover:not(:disabled):hover {
+    transform: translateY(-1px);
+}
+
+.button--fade {
+    transition: 1s;
+}
+
+.button--shadow-on-hover {
+	transition: box-shadow 200ms;
+}
+
+.button--shadow-on-hover:not(:disabled):hover {
+	box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.275);
+}
+
+/***********
+    Button Group
+***********/
+.button-group .button {
+    border-radius: 0;
+}
+
+.button-group .button:not(:first-child) {
+    border-left: none;
+}
+
+.button-group .button:first-child {
+    border-bottom-left-radius: .25rem;
+    border-top-left-radius: .25rem;
+}
+
+.button-group .button:last-child {
+    border-bottom-right-radius: .25rem;
+    border-top-right-radius: .25rem;
+}

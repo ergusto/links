@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import crypto from 'crypto';
+import jwt from 'jsonwebtoken';
 import uniqueValidator from 'mongoose-unique-validator';
 
 import { secret } from '../../config/secret.js';

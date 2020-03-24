@@ -1,0 +1,106 @@
+@import '../imports';
+
+/***********
+    Button Themes
+***********/
+
+@mixin buttonMixin($color) {
+	background: $color;
+	border-color: $color;
+
+	&:not(:disabled):hover {
+		background: darken($color, 8%);
+		border-color: darken($color, 8%);
+	}
+
+	&:not(:disabled):active {
+		background: darken($color, 25%);
+		border-color: darken($color, 25%);
+	}
+}
+
+@each $name, $color in $colors {
+
+	.button--#{$name} {
+		@include buttonMixin($color);
+	}
+
+}
+
+@each $name, $config in $buttons {
+
+	.button--#{$name} {
+		@if map-has-key($config, color) {
+			color: map-get($config, color);	
+		}
+
+		@if map-has-key($config, border-color) {
+			border-color: map-get($config, border-color);	
+		}
+
+		@if map-has-key($config, background-color) {
+			background-color: map-get($config, background-color);	
+		}
+
+		@if map-has-key($config, hover-color) {
+			&:not(:disabled):hover {
+				color: map-get($config, hover-color);	
+			}
+		}
+
+		@if map-has-key($config, hover-border-color) {
+			&:not(:disabled):hover {
+				border-color: map-get($config, hover-border-color);	
+			}
+		}
+
+		@if map-has-key($config, hover-background-color) {
+			&:not(:disabled):hover {
+				background-color: map-get($config, hover-background-color);	
+			}
+		}
+
+		@if map-has-key($config, active-color) {
+			&:not(:disabled):active {
+				color: map-get($config, active-color);	
+			}
+		}
+
+		@if map-has-key($config, active-border-color) {
+			&:not(:disabled):active {
+				border-color: map-get($config, active-border-color);	
+			}
+		}
+
+		@if map-has-key($config, active-background-color) {
+			&:not(:disabled):active {
+				background-color: map-get($config, active-background-color);	
+			}
+		}
+
+		@if map-has-key($config, focus-color) {
+			&:not(:disabled):focus {
+				color: map-get($config, focus-color);
+			}
+		}
+
+		@if map-has-key($config, focus-border-color) {
+			&:not(:disabled):focus {
+				border-color: map-get($config, focus-border-color);	
+			}
+		}
+
+		@if map-has-key($config, focus-background-color) {
+			&:not(:disabled):focus {
+				background-color: map-get($config, focus-background-color);
+			}
+		}
+
+		@if map-has-key($config, box-shadow) {
+			&:not(:disabled) {
+				box-shadow: map-get($config, box-shadow);
+			}
+		}
+	}
+
+}

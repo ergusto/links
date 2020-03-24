@@ -1,0 +1,25 @@
+@import '../imports';
+
+@each $key, $value in $colors {
+
+	.border-color-#{$key} {
+		border-color: $value;
+	}
+
+	.border-left-color-#{$key} {
+		border-left-color: $value;
+	}
+
+	.border-bottom-color-#{$key} {
+		border-bottom-color: $value;
+	}
+
+	.border-right-color-#{$key} {
+		border-right-color: $value;
+	}
+
+	.border-top-color-#{$key} {
+		border-top-color: $value;
+	}
+
+}

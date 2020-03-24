@@ -1,4 +1,4 @@
-import { createReducer } from 'lib';
+import { createReducer } from '../../lib';
 import {
 	LOGIN_REQUEST,
 	LOGIN_SUCCESS,

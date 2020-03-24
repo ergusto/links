@@ -1,17 +1,12 @@
 import {
 	AUTHENTICATION_SUCCESS,
-	LOGOUT_SUCCESS,
-	UNAUTHORISED_REQUEST
+	LOGOUT_USER
 } from './actionTypes.js';
 
-export function logoutSuccess() {
-	return {
-		type: LOGOUT_SUCCESS
-	};
-}
-
 export function logoutUser() {
-	return dispatch => dispatch(logoutSuccess());
+	return {
+		type: LOGOUT_USER
+	};
 }
 
 export function authenticationSuccess(user, token) {

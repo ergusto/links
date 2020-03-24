@@ -1,0 +1,13 @@
+@import '../imports';
+
+@each $key, $value in $colors {
+
+	.background-color-#{$key} {
+		background-color: $value;
+	}
+
+	.no-touch .background-color-#{$key}--on-hover:hover {
+		background-color: $value;
+	}
+
+}
