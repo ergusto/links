@@ -13,7 +13,7 @@ export default function LoginUser() {
 
 	return (
 		<div className='max-width-7 centered padding-top-4'>
-			<form onSubmit={handleSubmit(onSubmit)} className='max-width-3 centered' noValidate>
+			<form onSubmit={handleSubmit(onSubmit)} className='max-width-3 centered' noValidate autoComplete="off">
 				<header className='padding-top padding-bottom-2'>
 					<h2 className='text-align-center font-weight-thin color-white'>Login</h2>
 				</header>
