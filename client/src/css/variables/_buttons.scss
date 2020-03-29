@@ -13,6 +13,11 @@ $buttons: (
 		focus-border-color: get-color(light-grey),
 		focus-background-color: get-color(light-grey)
 	),
+	purple-main: (
+		background-color: #5d4aec,
+		border-color: #5d4aec,
+		color: white,
+	),
 	ghost: (
 		border-color: transparent,
 		background-color: transparent,
@@ -25,16 +30,8 @@ $buttons: (
 		border-color: white,
 		color: white
 	),
-	grey-ghost: (
-		border-color: transparent,
-		background-color: transparent,
-		color: get-color(dark-grey),
-		hover-background-color: get-color(light-grey),
-		active-background-color: get-color(subdued-grey)
-	),
-	purple-main: (
-		background-color: #5d4aec,
+	purple-ghost: (
 		border-color: #5d4aec,
-		color: white,
-	)
+		color: #5d4aec
+	)	
 );

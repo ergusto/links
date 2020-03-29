@@ -6,7 +6,7 @@ import { loginUser } from '../actions.js';
 const inputClass = 'form-field margin-bottom';
 
 export default function LoginUser() {
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit } = useForm();
 	const dispatch = useDispatch();
 
 	const onSubmit = data => dispatch(loginUser(data));

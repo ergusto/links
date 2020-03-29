@@ -11,9 +11,6 @@ router.post('/token', function(req, res, next) {
 		return res.status(422).json({ errors: { username: "can't be blank" } });
 	}
 
-	console.log(username);
-	console.log(password);
-
 	if (!password){
 		return res.status(422).json({ errors: { password: "can't be blank" } });
 	}

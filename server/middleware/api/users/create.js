@@ -9,9 +9,8 @@ const router = Router();
 router.use(authProhibited);
 
 router.post('/', function(req, res, next) {
-	const { username, email, password } = req.body;
-
-	const user = new User();
+	const { username, email, password } = req.body,
+		user = new User();
 
 	user.username = username;
 	user.email = email;

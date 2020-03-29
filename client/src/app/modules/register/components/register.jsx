@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import { registerUser } from '../actions.js';
 
 function RegisterUser() {
-	const { register, handleSubmit, errors } = useForm();
+	const { register, handleSubmit } = useForm();
 	const dispatch = useDispatch();
 
 	const onSubmit = data => dispatch(registerUser(data));

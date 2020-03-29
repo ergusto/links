@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 export default function({ AuthComponent, UnauthComponent, ...rest }) {
 	const { authenticated } = useSelector(data => data.auth);

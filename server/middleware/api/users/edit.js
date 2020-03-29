@@ -9,9 +9,7 @@ const router = Router();
 router.use(authRequired);
 
 router.post('/', async function(req, res, next) {
-	const user = await User.findById(req.user.id);
-
-	if (!user) {
+	if (!req.user) {
 		return res.sendStatus(401);
 	}
 
