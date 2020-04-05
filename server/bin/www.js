@@ -1,12 +1,12 @@
-#!/usr/bin/env node
-
 /**
  * Module dependencies.
  */
+import Debug from 'debug';
+import http from 'http';
+import app from '../src/app.js';
+import db from '../src/models';
 
-const app = require('../app');
-const debug = require('debug')('links:server');
-const http = require('http');
+const debug = Debug('links:server');
 
 /**
  * Get port from environment and store in Express.
@@ -25,9 +25,12 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+
+db.sequelize.sync().then(() => {
+	server.listen(port);
+	server.on('error', onError);
+	server.on('listening', onListening);
+});
 
 /**
  * Normalize a port into a number, string, or false.

@@ -1,14 +1,6 @@
-import mongoose from 'mongoose';
-import { Router } from 'express';
-import { authRequired } from '../../protections'; 
+export default async function(req, res, next) {
+	const user = {};
 
-const User = mongoose.model('User');
-
-const router = Router();
-
-router.use(authRequired);
-
-router.post('/', async function(req, res, next) {
 	if (!req.user) {
 		return res.sendStatus(401);
 	}
@@ -30,6 +22,4 @@ router.post('/', async function(req, res, next) {
 	user.save().then(function() {
 		return res.json({ user: user.toAuthJSON() });
 	}).catch(next);
-});
-
-module.exports = router;
+}

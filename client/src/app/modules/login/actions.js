@@ -13,6 +13,6 @@ export const loginUser = ({ username, password }) => ({
 		types: [LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE],
 		endpoint: urls.token,
 		method: METHOD_POST,
-		body: { user: { username, password } }
+		body: { username, password }
 	}
 });

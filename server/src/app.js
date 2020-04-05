@@ -3,17 +3,20 @@ import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
-import mongoose from 'mongoose';
 
 import cors from 'cors';
 import bodyParser from 'body-parser';
 import session from 'express-session';
 import errorhandler from 'errorhandler';
 
-import errorMiddleware from './middleware/error';
+import passport from 'passport';
+import './config/passport.js';
+
+import errorHandler from './controllers/error';
 import dotenv from 'dotenv';
 
-import { startDatabase } from './lib';
+import routes from './routes';
+import './lib/user.js';
 
 const app = express();
 
@@ -21,18 +24,17 @@ dotenv.config();
 
 app.use(cors());
 app.use(logger('dev'));
+app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-app.use(cookieParser());
+app.use(session({ secret: 'keyboard cat' }));
 app.use(express.static(path.join(__dirname, '../public')));
 
-startDatabase(process.env.MONGO_URL);
+app.use(passport.initialize());
+app.use(passport.session());
 
-import './models';
-import './config/passport';
-import apiRoutes from './middleware';
+app.use('/api', routes);
 
-app.use('/api', apiRoutes);
-app.use(errorMiddleware);
+app.use(errorHandler);
 
 module.exports = app;
